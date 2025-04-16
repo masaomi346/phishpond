@@ -54,7 +54,7 @@ services:
 
   browser:
     build:
-      context: https://github.com/jlesage/docker-firefox.git
+      context: ./docker/docker-firefox
       shm_size: '2gb'
     ports:
       - "5800:5800"
@@ -78,9 +78,11 @@ services:
       - FF_PREF_CAPTIVE_PORTAL=network.captive-portal-service.enabled=false
       - DISPLAY_WIDTH=1280
       - DISPLAY_HEIGHT=768
+      - ENABLE_CJK_FONT=1
 
   db:
-    image: mysql:5.7
+    image: mysql:8.0.42
+    platform: linux/amd64
     volumes:
       - db_data:/var/lib/mysql
     restart: always
