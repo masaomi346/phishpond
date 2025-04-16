@@ -3,7 +3,9 @@ https://github.com/zerofox-oss/phishpond
 
 ## Changed
 PHP 7.4.x -> 8.2.x
+
 mysql 5.7.x  -> 8.4.x
+
 FireFox 119.0.x  -> 136.0.x
 
 ## How to use
