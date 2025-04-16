@@ -82,3 +82,4 @@ RUN chmod +x /usr/local/bin/phpsendmail
 
 # Cleanup
 RUN rm -rf /usr/src/*
+
