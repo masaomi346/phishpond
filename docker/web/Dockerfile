@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 php:8.2.28-apache-bullseye
+FROM php:8.2.28-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
 
