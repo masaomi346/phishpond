@@ -2,7 +2,7 @@
 https://github.com/zerofox-oss/phishpond
 
 ## How to use
-1. `git clone https://github.com/zerofox-oss/phishpond.git`
+1. `git clone https://github.com/masaomi346/phishpond.git`
 2. `cd ./phishpond/`
 3. Configure any db connection strings within `docker-compose.yml`
 4. Run `docker compose up -d`
