@@ -1,4 +1,4 @@
-FROM php:8.2.28-apache-bullseye
+FROM php:8.3.20-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
 
