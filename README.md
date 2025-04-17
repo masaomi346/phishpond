@@ -1,5 +1,5 @@
 # masaomi346/phishpond
-<img src="./phishpond.png">
+<p align="center"><img src="./phishpond.png"></p>
 
 Unofficial renewal version of phishpond
 
