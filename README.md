@@ -1,3 +1,6 @@
+# masaomi346/phishpond
+Unofficial renewal version of phishpond
+
 ## What is phishpond?
 https://github.com/zerofox-oss/phishpond
 
@@ -10,12 +13,13 @@ FireFox 119.0.x  -> 136.0.x
 
 ## How to use
 1. `git clone https://github.com/masaomi346/phishpond.git`
-2. `cd ./phishpond/`
-3. Configure any db connection strings within `docker-compose.yml`
-4. Run `docker compose up -d`
-5. Browse to `http://localhost:5800` for the virtual browser
-6. Browse to `http://localhost:8080` for mitmproxy
-7. Within the virtual browser navigate to `http://phishpond.local`
+2. Place phishing kit on `./phishpond/www/`.
+3. `cd ./phishpond/`
+4. Configure any db connection strings within `docker-compose.yml`
+5. Run `docker compose up -d`
+6. Browse to `http://localhost:5800` for the virtual browser
+7. Browse to `http://localhost:8080` for mitmproxy
+8. Within the virtual browser navigate to `http://phishpond.local`
 
 (First time setup)
 1. Open preferences within the virtual browser
