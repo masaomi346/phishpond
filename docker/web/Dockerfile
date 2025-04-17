@@ -62,7 +62,7 @@ RUN docker-php-ext-install pdo_mysql && \
 
 # Install ioncube loader
 RUN mkdir -p /usr/local/ioncube
-COPY ioncube_loader_lin_7.4.so /usr/local/ioncube
+COPY ioncube_loader_lin_8.3.so /usr/local/ioncube
 COPY .bashrc /root/.bashrc
 
 # Generate cert
