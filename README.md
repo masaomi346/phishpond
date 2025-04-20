@@ -1,7 +1,7 @@
 # masaomi346/phishpond
 <p align="center"><img src="./phishpond.png"></p>
 
-Unofficial renewal version of phishpond
+Unofficial maintained of phishpond
 
 ## What is phishpond?
 https://github.com/zerofox-oss/phishpond
@@ -23,7 +23,7 @@ FireFox 119.0.x  -> 136.0.x
 7. Browse to `http://localhost:8080` for mitmproxy
 8. Within the virtual browser navigate to `http://phishpond.local`
 
-(First time setup)
+(Certificates setup)
 1. Open preferences within the virtual browser
 2. Search `cert`
 3. Click `view certificates`
