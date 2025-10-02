@@ -8,10 +8,7 @@ https://github.com/zerofox-oss/phishpond
 
 ## Changed
 PHP 7.4.x -> 8.3.x
-
 mysql 5.7.x  -> 8.4.x
-
-FireFox 119.0.x  -> 136.0.x
 
 ## How to use
 1. `git clone https://github.com/masaomi346/phishpond.git`
@@ -20,7 +17,7 @@ FireFox 119.0.x  -> 136.0.x
 4. Configure any db connection strings within `docker-compose.yml`
 5. Run `docker compose up -d`
 6. Browse to `http://localhost:5800` for the virtual browser
-7. Browse to `http://localhost:8080` for mitmproxy
+7. Browse to `http://localhost:8080/?token=mitm` for mitmproxy
 8. Within the virtual browser navigate to `http://phishpond.local`
 
 (Certificates setup)
