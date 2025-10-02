@@ -1,4 +1,4 @@
-FROM php:8.3.23-apache-bullseye
+FROM php:8.3.26-apache-bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -35,7 +35,7 @@ RUN apt -y update && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install xdebug
-RUN pecl install xdebug-3.4.2 && \
+RUN pecl install xdebug-3.4.5 && \
     docker-php-ext-enable xdebug 
 
 ## Install runkit
@@ -66,14 +66,14 @@ COPY ioncube_loader_lin_8.3.so /usr/local/ioncube
 COPY .bashrc /root/.bashrc
 
 # Generate cert
-RUN mkdir -p /etc/apache2/ssl/
-RUN openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -subj "/C=US/ST=./L=./O=./CN=phishpond.local" -keyout /etc/apache2/ssl/ssl.key -out /etc/apache2/ssl/ssl.crt
+RUN mkdir -p /etc/apache2/ssl/ && \
+    openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -subj "/C=US/ST=./L=./O=./CN=phishpond.local" -keyout /etc/apache2/ssl/ssl.key -out /etc/apache2/ssl/ssl.crt
 
 # Enable apache modules
-RUN a2enmod proxy_http
-RUN a2enmod rewrite headers
-RUN a2enmod dump_io
-RUN a2enmod ssl
+RUN a2enmod proxy_http && \
+    a2enmod rewrite headers && \
+    a2enmod dump_io && \
+    a2enmod ssl
 
 
 # Copy in mail wrapper script
@@ -82,4 +82,3 @@ RUN chmod +x /usr/local/bin/phpsendmail
 
 # Cleanup
 RUN rm -rf /usr/src/*
-
