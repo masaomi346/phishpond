@@ -8,6 +8,7 @@ https://github.com/zerofox-oss/phishpond
 
 ## Changed
 PHP 7.4.x -> 8.3.x
+
 mysql 5.7.x  -> 8.4.x
 
 ## How to use
