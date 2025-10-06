@@ -2,15 +2,13 @@ FROM php:8.3.26-apache-bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Update
+# Install useful tools and install important libaries
 RUN apt clean && \
     apt -y update --fix-missing && \
     apt upgrade -y && \
     apt --no-install-recommends install -y apt-utils && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install useful tools and install important libaries
-RUN apt -y update && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt -y update && \
     apt -y --no-install-recommends install nano wget \
     dialog \
     libsqlite3-dev \
@@ -34,21 +32,12 @@ RUN apt -y update && \
     rm -rf /var/lib/apt/lists/* && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install xdebug
+# Install xdebug, uopz and imagick
 RUN pecl install xdebug-3.4.5 && \
-    docker-php-ext-enable xdebug 
-
-## Install runkit
-#RUN pecl install runkit7-4.0.0a2 && \
-#    docker-php-ext-enable runkit7
-
-# Install uopz
-RUN pecl install uopz-7.1.1 && \
-    docker-php-ext-enable uopz 
-
-	
-# Install imagick
-RUN apt update && \
+    docker-php-ext-enable xdebug && \
+    pecl install uopz-7.1.1 && \
+    docker-php-ext-enable uopz && \
+    apt update && \
     apt -y --no-install-recommends install --fix-missing libmagickwand-dev && \
     rm -rf /var/lib/apt/lists/* && \
     pecl install imagick && \
@@ -75,10 +64,7 @@ RUN a2enmod proxy_http && \
     a2enmod dump_io && \
     a2enmod ssl
 
-
 # Copy in mail wrapper script
 COPY phpsendmail /usr/local/bin/phpsendmail
-RUN chmod +x /usr/local/bin/phpsendmail
-
-# Cleanup
-RUN rm -rf /usr/src/*
+RUN chmod +x /usr/local/bin/phpsendmail && \
+    rm -rf /usr/src/*
