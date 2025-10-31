@@ -1,4 +1,4 @@
-FROM php:8.3.26-apache-bookworm
+FROM php:8.3.27-apache-bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
