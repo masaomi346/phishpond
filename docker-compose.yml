@@ -4,16 +4,13 @@ services:
       context: ./docker/web
     depends_on:
       - mitmproxy
-    container_name: 'webserver'
-    hostname: 'phishpond.local'
-    restart: 'always'
+    container_name: "webserver"
+    hostname: "phishpond.local"
+    restart: "always"
     environment:
       - http_proxy=http://mitmproxy:8080
       - HTTPS_PROXY=http://mitmproxy:8080
       - XDEBUG_CONFIG="remote_host=localhost remote_port=9000 remote_enable=1"
-    links:
-      - mitmproxy
-      - db
     volumes:
       - ./www:/var/www/html
       - ./configs/web/vhosts:/etc/apache2/sites-enabled/
@@ -35,9 +32,9 @@ services:
   mitmproxy:
     build:
       context: ./docker/mitmproxy
-    container_name: 'mitmproxy'
-    restart: 'always'
-    command: > 
+    container_name: "mitmproxy"
+    restart: "always"
+    command: >
       bash -c "mitmweb --web-host 0.0.0.0 --set confdir=/home/mitmproxy/.mitmproxy --set web_password=mitm --ignore-hosts '(mozilla\.com|mozilla\.net|detectportal\.firefox\.com)' &&
       chmod -R 777 /home/mitmproxy/logs/"
     ports:
@@ -53,18 +50,15 @@ services:
   browser:
     build:
       context: https://github.com/jlesage/docker-firefox.git
-      shm_size: '2gb'
+      shm_size: "2gb"
     ports:
       - "5800:5800"
-    container_name: 'firefox'
+    container_name: "firefox"
     volumes:
       - browser-volume:/config:rw
       - mitm-volume:/config/certs/
     depends_on:
       - mitmproxy
-    links:
-      - mitmproxy
-      - webserver
     networks:
       - phishpond_network
     environment:
@@ -84,7 +78,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-    container_name: 'db'
+    container_name: "db"
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: phishpond_db
