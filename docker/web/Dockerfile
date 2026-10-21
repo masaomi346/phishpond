@@ -23,24 +23,34 @@ RUN apt clean && \
     curl \
     vim \
     net-tools \
-    libonig-dev && \ 
+    libonig-dev && \
     apt -y --no-install-recommends install --fix-missing libcurl4 \
     libcurl4-openssl-dev \
     zip \
+    unzip \
     gcc \
+    autoconf \
+    automake \
+    libtool \
+    m4 \
+    make \
     openssl && \
+    curl -fL --output /usr/local/bin/pie https://github.com/php/pie/releases/latest/download/pie.phar && \
+    chmod +x /usr/local/bin/pie && \
     rm -rf /var/lib/apt/lists/* && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+COPY --from=ghcr.io/php/pie:bin /pie /usr/bin/pie
+
 # Install xdebug, uopz and imagick
-RUN pecl install xdebug-3.5.3 && \
+RUN pie install xdebug/xdebug:3.5.3 && \
     docker-php-ext-enable xdebug && \
-    pecl install uopz-7.1.1 && \
+    pie install krakjoe/uopz:dev-master && \
     docker-php-ext-enable uopz && \
     apt update && \
     apt -y --no-install-recommends install --fix-missing libmagickwand-dev && \
     rm -rf /var/lib/apt/lists/* && \
-    pecl install imagick && \
+    pie install imagick/imagick && \
     docker-php-ext-enable imagick
 
 # Other PHP8 Extensions
