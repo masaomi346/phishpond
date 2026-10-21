@@ -48,11 +48,11 @@ services:
       - phishpond_network
 
   browser:
-    build:
-      context: https://github.com/jlesage/docker-firefox.git
-      shm_size: "2gb"
+    image: lscr.io/linuxserver/firefox:latest
+    shm_size: "2gb"
     ports:
-      - "5800:5800"
+      - "3000:3000"
+      - "3001:3001"
     container_name: "firefox"
     volumes:
       - browser-volume:/config:rw
