@@ -1,4 +1,4 @@
-FROM php:8.3.31-apache-bookworm
+FROM php:8.3.35-apache-bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -33,7 +33,7 @@ RUN apt clean && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install xdebug, uopz and imagick
-RUN pecl install xdebug-3.4.5 && \
+RUN pecl install xdebug-3.5.3 && \
     docker-php-ext-enable xdebug && \
     pecl install uopz-7.1.1 && \
     docker-php-ext-enable uopz && \
