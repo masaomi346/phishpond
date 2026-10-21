@@ -23,7 +23,7 @@ mysql 5.7.x  -> 8.4.x
 
 (Certificates setup)
 1. Open preferences within the virtual browser
-2. Search `cert` -> Advanced settings
+2. Search `cert` -> `Advanced settings`
 3. Click `Manage certificates`
 4. Click the authorities tab
 5. Click Import
