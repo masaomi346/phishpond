@@ -54,6 +54,7 @@ services:
       - "3000:3000"
       - "3001:3001"
     container_name: "firefox"
+    restart: unless-stopped
     volumes:
       - browser-volume:/config:rw
       - mitm-volume:/config/certs/
@@ -68,8 +69,8 @@ services:
       - FF_PREF_HTTPS_PROXY=network.proxy.ssl=\"mitmproxy\"
       - FF_PREF_HTTPS_PROXY_PORT=network.proxy.ssl_port=8080
       - FF_PREF_CAPTIVE_PORTAL=network.captive-portal-service.enabled=false
-      - DISPLAY_WIDTH=1280
-      - DISPLAY_HEIGHT=768
+      - PUID=1000
+      - PGID=1000
       - ENABLE_CJK_FONT=1
 
   db:
