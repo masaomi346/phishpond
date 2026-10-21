@@ -1,4 +1,4 @@
-FROM php:8.3.35-apache-bookworm
+FROM php:8.3.35-apache-trixie
 
 ARG DEBIAN_FRONTEND=noninteractive
 
