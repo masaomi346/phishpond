@@ -1,4 +1,4 @@
-FROM php:8.3.35-apache-trixie
+FROM php:8.3.36-apache-trixie
 
 ARG DEBIAN_FRONTEND=noninteractive
 
